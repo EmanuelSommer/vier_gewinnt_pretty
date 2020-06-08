@@ -1,0 +1,36 @@
+body {
+  min-height: 100%; 
+  width:100%; 
+  position: absolute;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: -moz-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+  background: -webkit-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+  background: -ms-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+  background: -o-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+  background: radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+}
+
+.title-app {
+  text-align: center;
+  width: 100%;
+  margin-top: 60px;
+  color: #ffffff;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.shiny-notification-message {
+  color: #fff !important;
+  background-color: #041f70 !important;
+  border: 1px solid #041f70 !important;
+}
+
+#shiny-notification-panel {
+  width: 350px !important;
+  text-align: center !important;
+}
