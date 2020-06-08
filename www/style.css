@@ -24,13 +24,4 @@ h1 {
   font-weight: bold;
 }
 
-.shiny-notification-message {
-  color: #fff !important;
-  background-color: #041f70 !important;
-  border: 1px solid #041f70 !important;
-}
 
-#shiny-notification-panel {
-  width: 350px !important;
-  text-align: center !important;
-}

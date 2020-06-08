@@ -223,7 +223,6 @@ ui <- fluidPage(
     tags$br(),
     sliderInput("tiefe",label = "Einstellung der Schwierigkeit:",min = 1, max = 5,value = 3),
     actionButton("reset",label = "Neues Spiel",icon = icon("redo")),
-    infoBoxOutput("status",width = NULL),
     tags$div(
         style = "width: 650px; margin: auto;",
         tags$br(),
@@ -274,7 +273,7 @@ ui <- fluidPage(
 
 #####################################################################################################################
 
-server <- function(input, output) {
+server <- function(input, output,session) {
     values <- reactiveValues(mat = start_matrix,text = "Weiter",over = FALSE)
     observeEvent(input$reset,{
         values$mat <- start_matrix
@@ -312,30 +311,72 @@ server <- function(input, output) {
             }
         }
     })
-    output$status <- renderInfoBox({
-        if(values$text == "Weiter"){
-            infotext <- "Spiel läuft"
-            infoicon <- icon("gamepad")
-            infocolor <- "blue"
-        } else if(values$text == "R"){
-            infotext <- "Du gewinnst"
-            infoicon <- icon("trophy")
-            infocolor <- "lime"
-        } else if(values$text == "G"){
-            infotext <- "Du verlierst"
-            infoicon <- icon("skull")
-            infocolor <- "fuchsia"
-        } else if(values$text == "Unentschieden"){
-            infotext <- "Unentschieden"
-            infoicon <- icon("meh")
-            infocolor <- "orange"
+    
+    observe({
+        if (values$text == "R") {
+            showModal(modalDialog(
+                tags$div(
+                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    tags$h2(
+                        tags$span(icon("trophy"), style = "color: #F7E32F;"),
+                        "Du gewinnst!",
+                        tags$span(icon("trophy"), style = "color: #F7E32F;")
+                    ),
+                    tags$br(), tags$br(),
+                    actionButton(
+                        inputId = "reload",
+                        label = "Nochmal!",
+                        style = "width: 100%; color: #0e46ed"
+                    )
+                ),
+                footer = NULL,
+                easyClose = FALSE
+            ))
+        } else if(values$text == "G") {
+            showModal(modalDialog(
+                tags$div(
+                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    tags$h2(
+                        tags$span(icon("skull"), style = "color: #000000;"),
+                        "Du verlierst!",
+                        tags$span(icon("skull"), style = "color: #000000;")
+                    ),
+                    tags$br(), tags$br(),
+                    actionButton(
+                        inputId = "reload",
+                        label = "Nochmal!",
+                        style = "width: 100%;"
+                    )
+                ),
+                footer = NULL,
+                easyClose = FALSE
+            ))
+        } else if(values$text == "Unentschieden") {
+            showModal(modalDialog(
+                tags$div(
+                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    tags$h2(
+                        tags$span(icon("meh"), style = "color: #fd8d03;"),
+                        "Unentschieden!",
+                        tags$span(icon("meh"), style = "color: #fd8d03;")
+                    ),
+                    tags$br(), tags$br(),
+                    actionButton(
+                        inputId = "reload",
+                        label = "Nochmal!",
+                        style = "width: 100%;"
+                    )
+                ),
+                footer = NULL,
+                easyClose = FALSE
+            ))
         }
-        infoBox(title = "Spielstatus",
-                width = 6,
-                color = infocolor,
-                value = infotext,
-                icon = infoicon)
     })
+    
+    observeEvent(input$reload, {
+        session$reload()
+    }, ignoreInit = TRUE)
+    
     output$spielfeld <- renderPlot({
         plot_grid(values$mat)
     })
