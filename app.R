@@ -190,8 +190,8 @@ plot_grid <- function(mat){
               axis.text = element_blank(),
               panel.grid.minor = element_line(colour = "#0e46ed",size = 2),
               panel.grid.major = element_line(colour = "#0e46ed",size = 2),
-              panel.background = element_rect(fill = "#041f70", colour = "#041f70"),
-              plot.background = element_rect(fill = "#041f70",colour = "#041f70"),
+              panel.background = element_rect(fill = "#041f70",colour = "#041f70"),
+              plot.background = element_rect(fill = "#0e46ed", colour = "#0e46ed"),
               plot.margin = margin(20,20,0,0))
 }
 
@@ -221,14 +221,26 @@ ui <- fluidPage(
         tags$h4("Bezwinge den Computer!")
     ),
     tags$br(),
-    sliderInput("tiefe",label = "Einstellung der Schwierigkeit:",min = 1, max = 5,value = 3),
-    actionButton("reset",label = "Neues Spiel",icon = icon("redo")),
+    tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #FFFFFF; color: #041f70}")),
+    tags$div(
+        style = "width: 33%; margin: auto; color: #FFFFFF; text-align: center;",
+        tags$br(),
+        sliderInput("tiefe",label = "Einstellung der Schwierigkeit:",min = 1, max = 5,value = 3,width = "100%"),
+        tags$br()
+    ),
+    
     tags$div(
         style = "width: 650px; margin: auto;",
         tags$br(),
         plotOutput("spielfeld",click = "plot_click"),
         tags$br()
-    )
+    ),
+    tags$div(
+        style = "width: 650px; margin: auto; text-align: center;",
+        tags$br(),
+        actionButton("reset",label = "Neues Spiel",icon = icon("redo")),
+        tags$br()
+    ),
 )
 # ui <- dashboardPage(
 #     dashboardHeader(title = "Vier gewinnt",
