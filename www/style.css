@@ -6,11 +6,11 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background: -moz-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
-  background: -webkit-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
-  background: -ms-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
-  background: -o-radial-gradient(circle at center, #0e46ed, #041f70) fixed;
-  background: radial-gradient(circle at center, #0e46ed, #041f70) fixed;
+  background: -moz-radial-gradient(circle at center, #a3a3c2, #7575a3) fixed;
+  background: -webkit-radial-gradient(circle at center, #a3a3c2, #7575a3) fixed;
+  background: -ms-radial-gradient(circle at center, #a3a3c2, #7575a3) fixed;
+  background: -o-radial-gradient(circle at center, #a3a3c2, #7575a3) fixed;
+  background: radial-gradient(circle at center, #a3a3c2, #7575a3) fixed;
 }
 
 .title-app {

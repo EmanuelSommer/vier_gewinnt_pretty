@@ -188,10 +188,10 @@ plot_grid <- function(mat){
         xlim(0.5,7.5) + ylim(0.5,6.5) +
         theme(axis.ticks = element_blank(),
               axis.text = element_blank(),
-              panel.grid.minor = element_line(colour = "#0e46ed",size = 2),
-              panel.grid.major = element_line(colour = "#0e46ed",size = 2),
-              panel.background = element_rect(fill = "#041f70",colour = "#041f70"),
-              plot.background = element_rect(fill = "#0e46ed", colour = "#0e46ed"),
+              panel.grid.minor = element_line(colour = "#7575a3",size = 2),
+              panel.grid.major = element_line(colour = "#7575a3",size = 2),
+              panel.background = element_rect(fill = "#a3a3c2",colour = "#a3a3c2"),
+              plot.background = element_rect(fill = "#7575a3", colour = "#7575a3"),
               plot.margin = margin(20,20,0,0))
 }
 
@@ -239,6 +239,7 @@ ui <- fluidPage(
         style = "width: 650px; margin: auto; text-align: center;",
         tags$br(),
         actionButton("reset",label = "Neues Spiel",icon = icon("redo")),
+        tags$br(),
         tags$br()
     ),
 )
@@ -328,7 +329,7 @@ server <- function(input, output,session) {
         if (values$text == "R") {
             showModal(modalDialog(
                 tags$div(
-                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    style = "text-align: center;color: #7575a3;font-weight: bold;",
                     tags$h2(
                         tags$span(icon("trophy"), style = "color: #F7E32F;"),
                         "Du gewinnst!",
@@ -338,7 +339,7 @@ server <- function(input, output,session) {
                     actionButton(
                         inputId = "reload",
                         label = "Nochmal!",
-                        style = "width: 100%; color: #0e46ed"
+                        style = "width: 100%; color: #7575a3"
                     )
                 ),
                 footer = NULL,
@@ -347,7 +348,7 @@ server <- function(input, output,session) {
         } else if(values$text == "G") {
             showModal(modalDialog(
                 tags$div(
-                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    style = "text-align: center;color: #7575a3;font-weight: bold;",
                     tags$h2(
                         tags$span(icon("skull"), style = "color: #000000;"),
                         "Du verlierst!",
@@ -366,7 +367,7 @@ server <- function(input, output,session) {
         } else if(values$text == "Unentschieden") {
             showModal(modalDialog(
                 tags$div(
-                    style = "text-align: center;color: #0e46ed;font-weight: bold;",
+                    style = "text-align: center;color: #7575a3;font-weight: bold;",
                     tags$h2(
                         tags$span(icon("meh"), style = "color: #fd8d03;"),
                         "Unentschieden!",
