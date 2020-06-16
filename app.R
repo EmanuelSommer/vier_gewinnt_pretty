@@ -181,7 +181,7 @@ plot_grid <- function(mat){
         mutate(n_col = as.integer(name)) %>%
         ggplot(aes(x = n_col,y = n_row,fill = value)) +
         geom_point(shape = 21,size = 22) +
-        scale_fill_manual(values = c(E = "white",R = "red",G = "yellow"),
+        scale_fill_manual(values = c(E = "white",R = "#481796",G = "#bc80bf"),
                           guide = NULL)+
         labs(x = "",y = "")+
         theme_bw()+
@@ -218,7 +218,8 @@ ui <- fluidPage(
     tags$div(
         class = "title-app",
         tags$h1("Vier Gewinnt"),
-        tags$h4("Bezwinge den Computer!")
+        tags$h4("Bezwinge den Computer!"),tags$br(),
+        tags$h5("Deine Farbe:",tags$span("BLAU", style = "color: #481796;font-weight: bold"))
     ),
     tags$br(),
     tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #FFFFFF; color: #041f70}")),
@@ -243,46 +244,7 @@ ui <- fluidPage(
         tags$br()
     ),
 )
-# ui <- dashboardPage(
-#     dashboardHeader(title = "Vier gewinnt",
-#                     dropdownMenu(
-#                         type = "notifications",
-#                         icon = icon("link"),
-#                         headerText = "Links",
-#                         notificationItem("Mein Github", icon = icon("github"),
-#                                          href = "https://github.com/EmanuelSommer/")
-#                     )
-#     ),
-#     dashboardSidebar(
-#         sliderInput("tiefe",label = "Einstellung der Schwierigkeit:",min = 1, max = 5,value = 3),
-#         tags$br()
-#     ),
-#     dashboardBody(
-#         fluidRow(
-#             column(width = 6,
-#                    infoBoxOutput("status",width = NULL)
-#             ),
-#             column(width = 6,
-#                    tags$br(),
-#                    actionButton("reset",label = "Neues Spiel",icon = icon("redo")),
-#                    tags$br()
-#             ),
-#             column(width = 12,
-#                    box(width = NULL,title = "Spielfeld",
-#                        plotOutput("spielfeld",click = "plot_click"))),
-#             column(width = 12,
-#                    infoBox(title = "Herausforderung",width = 12,
-#                            subtitle = "Für wen der Gegner zu leicht zu besiegen ist, der kann sich einer deutlich schwereren Herausforderung stellen: Erreiche ein Unentschieden bei möglichst hohem Schwierigkeitsgrad.",
-#                            icon = icon("medal"),color = "blue"),
-#                    infoBox(title = "Tipp",width = 12,
-#                            subtitle = "Auf mobilen Geräten ist Querformat meist angenehmer zum Spielen.",
-#                            icon = icon("info"),color = "blue")
-#             )
-#         )
-#     ),
-#     skin = "black"
-#     
-# )
+
 
 #####################################################################################################################
 
