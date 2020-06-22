@@ -294,7 +294,7 @@ server <- function(input, output,session) {
                     style = "text-align: center;color: #7575a3;font-weight: bold;",
                     tags$h2(
                         tags$span(icon("trophy"), style = "color: #F7E32F;"),
-                        "Du gewinnst!",
+                        "Du hast GEWONNEN!",
                         tags$span(icon("trophy"), style = "color: #F7E32F;")
                     ),
                     tags$br(), tags$br(),
@@ -313,7 +313,7 @@ server <- function(input, output,session) {
                     style = "text-align: center;color: #7575a3;font-weight: bold;",
                     tags$h2(
                         tags$span(icon("skull"), style = "color: #000000;"),
-                        "Du verlierst!",
+                        "Du hast VERLOREN!",
                         tags$span(icon("skull"), style = "color: #000000;")
                     ),
                     tags$br(), tags$br(),
