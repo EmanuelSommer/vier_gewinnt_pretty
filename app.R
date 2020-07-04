@@ -289,6 +289,7 @@ server <- function(input, output,session) {
     
     observe({
         if (values$text == "R") {
+            print(paste0(input$tiefe,"__Gewonnen+++++++++++++++++++++++++++++++"))
             showModal(modalDialog(
                 tags$div(
                     style = "text-align: center;color: #7575a3;font-weight: bold;",
@@ -308,6 +309,7 @@ server <- function(input, output,session) {
                 easyClose = FALSE
             ))
         } else if(values$text == "G") {
+            print(paste0(input$tiefe,"__Verloren---------------------------"))
             showModal(modalDialog(
                 tags$div(
                     style = "text-align: center;color: #7575a3;font-weight: bold;",
@@ -327,6 +329,7 @@ server <- function(input, output,session) {
                 easyClose = FALSE
             ))
         } else if(values$text == "Unentschieden") {
+            print(paste0(input$tiefe,"__Unentschieden========================="))
             showModal(modalDialog(
                 tags$div(
                     style = "text-align: center;color: #7575a3;font-weight: bold;",
